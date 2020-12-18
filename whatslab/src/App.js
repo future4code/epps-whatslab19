@@ -39,19 +39,21 @@ class App extends React.Component {
     return (
       <div className={'mensagem-container'}>
         <p>WhatsLab</p>
-        <div>{mensagemComponentes}</div>
+        <div className={'mensagens-texto'}>{mensagemComponentes}</div>
         <div>
           <input
             value={this.state.valorInputNomeUsuario}
             onChange={this.onChangeNovoNomeUsuario}
             placeholder={"Digite o nome do usuário!"}
+            className={'mensagem-usuario'}
           />
           <input
             value={this.state.valorInputNovaMensagem}
             onChange={this.onChangeNovaMensagem}
-            placeholder={"Digite a nova mensagem!"}
+            placeholder={"Digite a mensagem!"}
+            className={'mensagem-campo'}
           />
-          <button onClick={this.adicionarMensagem}>Add Post</button>
+          <button onClick={this.adicionarMensagem}>Enviar</button>
         </div>
 
       </div>
