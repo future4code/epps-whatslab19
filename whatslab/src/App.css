@@ -2,6 +2,7 @@
   text-align: center;
   display: flex;
   align-items: center;
+  
 }
 
 .mensagem-container {
@@ -12,6 +13,8 @@
   width: 50%;
   height: 100vh;
   margin-left: 25%;
+  background: greenyellow;
+  border: 1px solid black;
   
 }
 
@@ -22,16 +25,27 @@
   align-items: left;
   width: 100%;
   height: 100vh;
-  margin-left: 10%;
+  margin-left: 5%;
   
 }
 
 .mensagem-usuario {
   font-weight: bold;
+  width: 13vw;
+  background: greenyellow;
+  
 }
 
 .mensagem-campo {
-  width: 28vw;
+  width: 30vw;
+  background: greenyellow;
+  
+}
+
+.button-enviar {
+  width: 5vw;
+  background: greenyellow;
+  
 }
 
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import Mensagens from './components/Mensagens/Mensagens'
 import './App.css';
 
 class App extends React.Component {
@@ -27,14 +26,42 @@ class App extends React.Component {
     this.setState({ valorInputNovaMensagem: event.target.value })
   }
 
+  pressionarEnter = (event) => {
+    if (event.key === "Enter") {
+      this.adicionarMensagem()
+    }
+}
+
+removerTodaMensagem = (indiceTodaMsn) => {
+  if (window.confirm("Deseja remover esta mensagem?")) {
+    const mensagemRemovida = this.state.mensagens;
+    mensagemRemovida.splice(indiceTodaMsn, 1);
+
+    this.setState({
+      mensagens: mensagemRemovida
+    });
+  }
+}
+
   render() {
 
     const mensagemComponentes = this.state.mensagens.map((item) => {
-      return <Mensagens
-        nomeUsuario={item.nomeUsuario}
-        mensagemPostada={item.mensagemPostada}
-      />
-    })
+      if (item.nomeUsuario === "") {
+        return (
+          <div>
+            <p onDoubleClick= {this.removerTodaMensagem}>{item.mensagem}</p>
+          </div>
+        );
+      }
+      return (
+        <div>
+          <p onDoubleClick= {this.removerTodaMensagem}>
+            <strong>{item.nomeUsuario}:</strong> {item.mensagemPostada}
+          </p>
+        </div>
+      );
+    });
+
 
     return (
       <div className={'mensagem-container'}>
@@ -50,10 +77,14 @@ class App extends React.Component {
           <input
             value={this.state.valorInputNovaMensagem}
             onChange={this.onChangeNovaMensagem}
+            onKeyDown={this.pressionarEnter}
             placeholder={"Digite a mensagem!"}
             className={'mensagem-campo'}
           />
-          <button onClick={this.adicionarMensagem}>Enviar</button>
+          <button onClick={this.adicionarMensagem} className={'button-enviar'}>
+            Enviar
+          </button>
+
         </div>
 
       </div>
