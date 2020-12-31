@@ -46,10 +46,10 @@ removerTodaMensagem = (indiceTodaMsn) => {
   render() {
 
     const mensagemComponentes = this.state.mensagens.map((item) => {
-      if (item.nomeUsuario === "") {
+      if (item.nomeUsuario === "eu") {
         return (
-          <div>
-            <p onDoubleClick= {this.removerTodaMensagem}>{item.mensagem}</p>
+          <div className={'div-mensagem-eu'}>
+            <p className={'p-mensagem-eu'} onDoubleClick= {this.removerTodaMensagem}>{item.mensagemPostada}</p>
           </div>
         );
       }
